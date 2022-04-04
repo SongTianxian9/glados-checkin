@@ -5,6 +5,7 @@ agentid = os.environ["AGENTID"]
 secret = os.environ["SECRET"]
 companyid = os.environ["COMPANYID"]
 
+print("start")
 # wecom 函数
 def send_to_wecom(text,wecom_cid,wecom_aid,wecom_secret,wecom_touid='@all'):
     get_token_url = f"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={wecom_cid}&corpsecret={wecom_secret}"

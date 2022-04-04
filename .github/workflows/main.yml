@@ -9,10 +9,10 @@ jobs:
   checkin:
     runs-on: ubuntu-latest
     env:
-      COOKIE: ${{ secrets.cookie }}
-      COMPANYID: ${{ secrets.companyid }}
-      AGENTID: ${{ secrets.agentid }}
-      SECRET: ${{ secrets.secret }}
+      COOKIE: ${{ secrets.COOKIE }}
+      COMPANYID: ${{ secrets.COMPANYID }}
+      AGENTID: ${{ secrets.AGENTID }}
+      SECRET: ${{ secrets.SECRET }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
