@@ -99,7 +99,8 @@ def main():
         str = '[base] %s , you have %s days left. use: %.3f/%dGB(%.2f%%)' % (mess, time, use, total, use/total*100)
     else:
         str = "cookie 已经过期了"
-    send_to_wecom(str, companyid, agentid, secret)
+    ret = send_to_wecom(str, companyid, agentid, secret)
+    print(str, ret)
 
 if __name__ == '__main__':
     main()
