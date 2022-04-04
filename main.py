@@ -93,6 +93,8 @@ def main():
     today = traffic.json()['data']['today']
     if 'message' in checkin.text:
         mess = checkin.json()['message']
+        print(mess)
+        print(state)
         time = state.json()['data']['leftDays']
         time = time.split('.')[0]
         total = 200
