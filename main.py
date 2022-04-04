@@ -88,8 +88,8 @@ def main():
         'token': 'glados_network'
     }
     checkin = requests.post(checkin_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent,'content-type':'application/json;charset=UTF-8'},data=json.dumps(payload))
-    state = requests.get(status_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
-    traffic = requests.get(traffic_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
+    state = requests.get(status_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent,'content-type':'application/json;charset=UTF-8'},data=json.dumps(payload))
+    traffic = requests.get(traffic_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent,'content-type':'application/json;charset=UTF-8'},data=json.dumps(payload))
     if 'message' in checkin.text:
         mess = checkin.json()['message']
         time = state.json()['data']['leftDays']
