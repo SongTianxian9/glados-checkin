@@ -1,6 +1,6 @@
 name: glados-checkin
 on:
-  issue:
+  issues:
   issue_comment:
   push:
   schedule:
