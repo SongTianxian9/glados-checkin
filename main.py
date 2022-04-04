@@ -88,25 +88,19 @@ def main():
         'token': 'glados_network'
     }
     checkin = requests.post(checkin_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent,'content-type':'application/json;charset=UTF-8'},data=json.dumps(payload))
-    state =  requests.get(status_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
-    traffic =  requests.get(traffic_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
-    today = traffic.json()['data']['today']
+    state = requests.get(status_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
+    traffic = requests.get(traffic_url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
     if 'message' in checkin.text:
         mess = checkin.json()['message']
-        print(mess)
-        print(state)
         time = state.json()['data']['leftDays']
         time = time.split('.')[0]
         total = 200
+        today = traffic.json()['data']['today']
         use = today/1024/1024/1024
         str = '[base] %s , you have %s days left. use: %.3f/%dGB(%.2f%%)' % (mess, time, use, total, use/total*100)
     else:
         str = "cookie 已经过期了"
     ret = send_to_wecom(str, companyid, agentid, secret)
-    print(str, ret)
-
-def main_handler(event, context):
-  return main()
 
 if __name__ == '__main__':
     main()
