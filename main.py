@@ -102,5 +102,8 @@ def main():
     ret = send_to_wecom(str, companyid, agentid, secret)
     print(str, ret)
 
+def main_handler(event, context):
+  return main()
+
 if __name__ == '__main__':
     main()
