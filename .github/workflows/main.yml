@@ -1,0 +1,23 @@
+name: glados-checkin
+on:
+  issue:
+  issue_comment:
+  push:
+  schedule:
+    - cron: '30 14 * * *'
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+    env:
+      COOKIE: ${{ secrets.cookie }}
+      COMPANYID: ${{ secrets.companyid }}
+      AGENTID: ${{ secrets.agentid }}
+      SECRET: ${{ secrets.secret }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+      - run: pip install -r requirements
+      - run: python main.py
+
